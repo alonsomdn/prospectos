@@ -1,0 +1,57 @@
+<div layout>
+    <div *ngIf="prospecto.id > 0">
+        <h4>Evaluación de prospecto</h4>
+    </div>
+    <div *ngIf="prospecto.id < 0">
+        <h4>Nuevo prospecto</h4>
+    </div>
+</div>
+<div>
+    <div layout>
+        <label>Nombre</label>
+        <input type="text" maxlength="100" [readonly]="prospecto.id > 0" [(ngModel)]="prospecto.nombre">
+        
+        <label>Primer apellido</label>
+        <input type="text" maxlength="50" [readonly]="prospecto.id > 0" [(ngModel)]="prospecto.apellidoPaterno">
+        
+        <label>Segundo apellido</label>
+        <input type="text" maxlength="50" [readonly]="prospecto.id > 0" [(ngModel)]="prospecto.apellidoMaterno">
+    </div>
+    <div layout>
+        <label>Calle</label>
+        <input type="text" maxlength="50" [readonly]="prospecto.id > 0" [(ngModel)]="prospecto.calle">
+        <label>Número</label>
+        <input type="text" maxlength="20" [readonly]="prospecto.id > 0" [(ngModel)]="prospecto.numero">
+        <label>Colonia</label>
+        <input type="text" maxlength="40" [readonly]="prospecto.id > 0" [(ngModel)]="prospecto.colonia">
+        <label>Código postal</label>
+        <input type="text" maxlength="10" [readonly]="prospecto.id > 0" [(ngModel)]="prospecto.codigoPostal">
+    </div>
+    <div layout>
+        <label>Teléfono</label>
+        <input type="text" maxlength="10" [readonly]="prospecto.id > 0" [(ngModel)]="prospecto.telefono">
+        <label>R.F.C.</label>
+        <input type="text" maxlength="13" [readonly]="prospecto.id > 0" [(ngModel)]="prospecto.rfc">
+    </div>
+    <div layout *ngIf="prospecto.id < 0">
+        <button (click)="guardar()">Guardar</button>
+        <span>&nbsp;</span>
+        <button (click)="cancelar()">Cancelar</button>
+    </div>    
+    
+    <div *ngIf="prospecto.id > 0">
+        <div layout>
+            <label>Estatus</label>
+            <input type="text" readonly [(ngModel)]="prospecto.status">
+            <label>Observaciones</label>
+            <input type="text" aria-multiline="true" maxlength="500"  [(ngModel)]="prospecto.observaciones">
+        </div>
+        <div layout>
+            <button (click)="autorizar()">Autorizar</button>
+            <span>&nbsp;</span>
+            <button (click)="rechazar()">Rechazar</button>
+            <span>&nbsp;</span>
+            <button (click)="cancelar()">Cancelar</button>
+        </div>
+    </div>
+  </div>
